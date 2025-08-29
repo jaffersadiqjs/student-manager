@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Student List{% endblock %}
+{% block content %}
+<h2>All Students (CBV)</h2>
+<table class="table table-striped">
+  <thead><tr><th>Roll No</th><th>Name</th><th>Course</th><th>Age</th><th>Actions</th></tr></thead>
+  <tbody>
+  {% for student in students %}
+    <tr>
+      <td>{{ student.roll_no }}</td>
+      <td>{{ student.name }}</td>
+      <td>{{ student.course }}</td>
+      <td>{{ student.age }}</td>
+      <td>
+        <a class="btn btn-info btn-sm" href="{% url 'records:student-detail' student.pk %}">View</a>
+        <a class="btn btn-warning btn-sm" href="{% url 'records:student-update' student.pk %}">Edit</a>
+        <a class="btn btn-danger btn-sm" href="{% url 'records:student-delete' student.pk %}">Delete</a>
+      </td>
+    </tr>
+  {% empty %}
+    <tr><td colspan="5">No students registered.</td></tr>
+  {% endfor %}
+  </tbody>
+</table>
+<p><a href="{% url 'records:fbv-student-list' %}">View FBV Example</a></p>
+{% endblock %}

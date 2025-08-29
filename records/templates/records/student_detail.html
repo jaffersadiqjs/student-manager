@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}Student Details{% endblock %}
+{% block content %}
+<h2>{{ student.name }} ({{ student.roll_no }})</h2>
+<ul class="list-group mb-3">
+  <li class="list-group-item">Course: {{ student.course }}</li>
+  <li class="list-group-item">Age: {{ student.age }}</li>
+</ul>
+<a class="btn btn-warning" href="{% url 'records:student-update' student.pk %}">Edit</a>
+<a class="btn btn-danger" href="{% url 'records:student-delete' student.pk %}">Delete</a>
+<a class="btn btn-secondary" href="{% url 'records:student-list' %}">Back</a>
+{% endblock %}

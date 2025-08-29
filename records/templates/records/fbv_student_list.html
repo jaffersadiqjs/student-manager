@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block title %}Student List FBV{% endblock %}
+{% block content %}
+<h2>All Students (FBV)</h2>
+<ul class="list-group">
+  {% for student in students %}
+    <li class="list-group-item">
+      {{ student.roll_no }} - {{ student.name }} ({{ student.course }}, Age: {{ student.age }})
+    </li>
+  {% empty %}
+    <li class="list-group-item">No students registered.</li>
+  {% endfor %}
+</ul>
+<p><a href="{% url 'records:student-list' %}">Back to CBV list</a></p>
+{% endblock %}
